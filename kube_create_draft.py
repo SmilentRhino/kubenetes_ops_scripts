@@ -107,6 +107,8 @@ def api_mapping(self, manifest):
     print(api_func_name, list_func_name, create_func_name, read_func_name, manifest_type,  update_func_name)
     return (api_func_name, list_func_name, create_func_name, read_func_name, manifest_type,  update_func_name)
 
+
+
 def create_manifest(self, manifest):
     created = False
     my_api_name = self.api_mapping(manifest)
@@ -119,3 +121,6 @@ def create_manifest(self, manifest):
         create_result = getattr(api_instance, create_func_name)(manifest['metadata']['namespace'], body=manifest)
     logging.info(create_result)
     return created
+
+with open('manifest.yaml', 'r') as f:
+    mainfest = yaml.load(f)
